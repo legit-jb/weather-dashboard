@@ -18,6 +18,10 @@
       border-radius: 25px;
   }
 
+  #temp::after {
+    content:"\00b0""F";
+  }
+
   #fiveDay {
       background-color: var(--joffwhite);
   }
