@@ -1,0 +1,27 @@
+:root {
+    --jblack: #1e1d20;
+    --jdarkgray: #333333;
+    --jgray: #d6d6d6;
+    --jblue: #0571e3;
+    --jdarkblue: #01448b;
+    --jdarkred: #bb8482;
+    --jdarkgreen: #91bd83;
+    --jdarkyellow: #b0ba53;
+    --jwhite: #fbfbfd;
+    --joffwhite: #f5f5f7;
+    font-family: helvetica, Arial, sans-serif;
+  }
+
+  #searchedCities, #weatherDay {
+      background-color: var(--joffwhite);
+      border: 0px var(--jblack) solid;
+      border-radius: 25px;
+  }
+
+  #fiveDay {
+      background-color: var(--joffwhite);
+  }
+
+  .list-custom {
+      background-color: var(--joffwhite);
+  }
