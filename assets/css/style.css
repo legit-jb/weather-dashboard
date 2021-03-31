@@ -12,6 +12,25 @@
     font-family: helvetica, Arial, sans-serif;
   }
 
+  button {
+
+  }
+
+  .btn {
+      color: var(--jblue);
+      border-color: var(--jblue);
+  }
+
+  .btn:hover {
+    border-color: var(--jblue);
+      background-color: var(--jblue);
+  }
+
+  .btn:active, .btn:focus {
+      background-color: var(--jdarkblue);
+      border-color: var(--jdarkblue);
+  }
+
   #searchedCities, #weatherDay {
       background-color: var(--joffwhite);
       border: 0px var(--jblack) solid;
@@ -20,6 +39,10 @@
 
   #temp::after {
     content:"\00b0""F";
+  }
+
+  #humidity::after {
+    content:"%";
   }
 
   #fiveDay {
