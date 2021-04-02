@@ -12,43 +12,199 @@
     font-family: helvetica, Arial, sans-serif;
   }
 
+  /* GENERAL ELEMENTS */
+  .sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+
+  body {
+    padding-top: 40px;
+  }
+
+  section {
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+
   button {
 
   }
 
+  ul {
+    width: 90%;
+    height: 65%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 2%;
+    margin: 0%
+  }
+
+  li {
+    list-style-type:none;
+    padding: 1%;
+    margin: 0;
+  }
+
+  .row {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  input[type=text]{
+    width: 100%; 
+    padding: 12px; 
+    border: 1px solid var(--jgray); 
+    border-radius: 4px; 
+    box-sizing: border-box; 
+    margin-top: 6px; 
+    margin-bottom: 16px; 
+    resize: vertical;
+  }
+
   .btn {
-      color: var(--jblue);
-      border-color: var(--jblue);
+    padding: 12px; 
+    border: 1px solid var(--jgray); 
+    border-radius: 4px; 
+    box-sizing: border-box; 
+    margin-top: 6px; 
+    margin-bottom: 16px; 
+    resize: vertical;
   }
 
   .btn:hover {
-    border-color: var(--jblue);
-      background-color: var(--jblue);
+    border-color: var(--jblack);
+    background-color: var(--jblack);
+    color: var(--jwhite);
   }
 
   .btn:active, .btn:focus {
-      background-color: var(--jdarkblue);
-      border-color: var(--jdarkblue);
+      background-color: var(--jwhite);
+      border-color: var(--jblack);
+      color: var(--jblack);
   }
 
-  #searchedCities, #weatherDay {
-      background-color: var(--joffwhite);
-      border: 0px var(--jblack) solid;
-      border-radius: 25px;
+  #title {
+    padding: 12px;  
+    box-sizing: border-box; 
+    margin-top: 6px; 
+    margin-bottom: 16px; 
+    resize: vertical;
   }
 
-  #temp::after {
+  .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2%;
+    width: 45%;
+    height: 200px;
+    background-color: var(--jgray);
+    
+    /* align-items: left; */
+  }
+
+  #citySearEl {
+    display: flex;
+  }
+
+  .navbar {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    justify-content: space-around;
+    align-items: center;
+    height: 40px;
+
+  } 
+
+  /* CURRENT WEATHER */
+  .city-name {
+
+  }
+
+
+  .card-header {
+    text-align: center;
+    padding-top: 1%;
+    margin-top: 20px;
+    width: 50%;
+    background-color: var(--jblack);
+    border-radius: 15px;
+    color: var(--jwhite);
+  }
+
+  /* #searchedCities, #weatherDay {
+    width: 48%;
+    height: 200px;
+  } */
+
+  .temp::after {
     content:"\00b0""F";
   }
 
-  #humidity::after {
+  .humidity::after {
     content:"%";
   }
 
-  #fiveDay {
-      background-color: var(--joffwhite);
+  .five {
+    margin: 1%;
+    width: 15%;
+    min-width: 120px;
+    border-radius: 15px;
   }
 
-  .list-custom {
-      background-color: var(--joffwhite);
+  .five ul {
+    margin-top: 10px;
+  }
+
+  @media screen and (max-width: 600px) {
+    section {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+    
+    .card {
+      min-width: 200px;
+      width: 35%;
+      margin: 2%;
+      padding:5%;
+      border-radius: 0;
+    }
+
+    .card-header{
+      margin-top: 5px;
+      margin-bottom: 10px;
+    }
+
+    #searchedCities {
+      width: 70%;
+    }
+
+    ul {
+      height: 70%;
+    }    
+  }
+
+  @media screen and (max-width: 500px) {
+    /* section {
+      margin-top: 0;
+      margin-bottom: 0;
+    } */
+    
+    .card, #searchedCities {
+      min-width: 200px;
+      width: 100%;
+      margin: 2%;
+      padding:5%;
+      border-radius: 0;
+    }
+
+    .card-header{
+      margin-top: 5px;
+      margin-bottom: 10px;
+    }
   }
