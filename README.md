@@ -1,7 +1,6 @@
 # weatherDash
 
 ## Description
-Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
 A nice little webpage that shows the weather of a city for the current day and also the five day forecast
 
 ## Usage
