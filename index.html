@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" /> -->
     <link rel="stylesheet" href="./assets/css/reset.css" />
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Weather Dashboard</title>
@@ -14,40 +14,126 @@
 
 <body>
 
-    <nav class="navbar sticky-top">
-        <div class="container">
-            <form class="d-flex" id="citySearEl">
-                <input class="form-control me-2" type="text" id="citySearch" placeholder="City" aria-label="City Search">
-                <button class="btn btn-outline-success" type="submit" id="submit">Submit</button>
-            </form>
-            <div>Weather Dashboard</div>
-        </div>
+    <nav class="navbar row sticky">
+
+        <form id="city-search-form">
+            <input type="text" id="citySearch" placeholder="City" aria-label="City Search">
+            <button class="btn" type="submit" id="submit">Submit</button>
+        </form>
+        <span id="title">Weather Dashboard</span>
+
     </nav>
-    
-<div class="container">
-    <div class="row justify-content-between">
-        <div class="col-sm-12 col-md-4 card" id="searchedCities">Searched Cities</div>
-        <div class="col-sm-12 col-md-4 card" id="weatherDay">
-            <div class="card-header">City Name</div>
-            <ul class="list-group list-group-flush list-custom">
-                <li class="list-group-item">Temperature:
-                    <span id="temp"></span>
-                </li>
-                <li class="list-group-item">Humidity:
-                    <span id="humidity"></span>
-                </li>
-                <li class="list-group-item">Wind Speed:
-                    <span id="wind"></span>
-                </li>
-                <li class="list-group-item">UV Index:
-                    <span id="uv"></span>
-                </li>
-              </ul>
+
+    <div class="row" id="main">
+        
+        <div class="card" id="searched-cities-container">
+            <div class="card-header" id="searched-cities-header">Searched Cities</div>
+            <div id="searched-cities"></div>
+            
         </div>
-</div>
+
+        <section id="weather-section">
+            <div class="card" id="todays-weather">
+                <label class="card-header">Today's Weather</label>
+                <h2 id="city-name"></h2>
+                <section id="weather-info">
+                <ul id="info-list">
+                    <li>Temperature:
+                        <span class="temp" id="temp"></span>
+                    </li>
+                    <li>Humidity:
+                        <span class="humidity" id="humidity"></span>
+                    </li>
+                    <li>Wind Speed:
+                        <span class="wind" id="wind"></span>
+                    </li>
+                    <li>UV Index:
+                        <span class="uv" id="uv"></span>
+                    </li>
+                </ul>
+                <img id="todays-condition">
+            </section>
+            </div>
+
+
+            <div class="row" id="five-day">
+                <!-- <div class="container" id="five-day-container"> -->
+                    <div class="five card">
+                        <header class="card-header date" id="day1-date">date</header>
+                        <ul>
+                            <li>
+                                <img class="condition" id="day1-condition">
+                            </li>
+                            <li>Temp:
+                                <span class="temp" id="day1-temp"></span>
+                            </li>
+                            <li>Humidity:
+                                <span class="humidity" id="day1-humidity"></span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="five card">
+                        <header class="card-header date" id="day2-date">date</header>
+                        <ul>
+                            <li>
+                                <img class="condition" id="day2-condition">
+                            </li>
+                            <li>Temp:
+                                <span class="temp" id="day2-temp"></span>
+                            </li>
+                            <li>Humidity:
+                                <span class="humidity" id="day2-humidity"></span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="five card">
+                        <header class="card-header date" id="day3-date">date</header>
+                        <ul>
+                            <li>
+                                <img class="condition" id="day3-condition">
+                            </li>
+                            <li>Temp:
+                                <span class="temp" id="day3-temp"></span>
+                            </li>
+                            <li>Humidity:
+                                <span class="humidity" id="day3-humidity"></span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="five card">
+                        <header class="card-header date" id="day4-date">date</header>
+                        <ul>
+                            <li>
+                                <img class="condition" id="day4-condition">
+                            </li>
+                            <li>Temp:
+                                <span class="temp" id="day4-temp"></span>
+                            </li>
+                            <li>Humidity:
+                                <span class="humidity" id="day4-humidity"></span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="five card">
+                        <header class="card-header date" id="day5-date">date</header>
+                        <ul>
+                            <li>
+                                <img class="condition" id="day5-condition">
+                            </li>
+                            <li>Temp:
+                                <span class="temp" id="day5-temp"></span>
+                            </li>
+                            <li>Humidity:
+                                <span class="humidity" id="day5-humidity"></span>
+                            </li>
+                        </ul>
+                    </div>
+                <!-- </div> -->
+            </div>
+        </section>
     </div>
-    <div class="card" id="fiveDay"></div>
-    <script src="./assets/js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.4/dayjs.min.js"></script>
+    <script src="./assets/js/index.js"></script>
 </body>
 
 </html>
