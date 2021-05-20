@@ -25,4 +25,4 @@ WHEN I click on a city in the search history
 
 THEN I am again presented with current and future conditions for that city
 
-    ![weatherDash example](/assets/images/weatherdash.png)
+    ![weatherDash example](assets/images/weatherdash.png)
