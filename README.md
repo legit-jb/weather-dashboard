@@ -25,6 +25,8 @@ WHEN I click on a city in the search history
 
 THEN I am again presented with current and future conditions for that city
 
+## Github Link
+https://github.com/legit-jb/weatherDash
 
-    ![weatherDash example](assets/images/weatherdash.png)
-
+## Deployed Link
+https://legit-jb.github.io/weatherDash
