@@ -25,6 +25,8 @@ WHEN I click on a city in the search history
 
 THEN I am again presented with current and future conditions for that city
 
+  ![app landing page](assets/images/screen-shot.png)
+
 ## Github Link
 https://github.com/legit-jb/weatherDash
 
