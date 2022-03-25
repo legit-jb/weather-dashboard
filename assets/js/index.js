@@ -8,6 +8,7 @@ const searchArray = JSON.parse(localStorage.getItem("weatherSearch")) || [];
 // displays the local storage search history
 displayLocalStorage = () => {
     if (searchedCities.firstChild) searchedCities.firstChild.remove();
+
     const searchedCitieslist = document.createElement("ul");
     searchedCitieslist.setAttribute("id", "searched-cities-list");
     searchedCities.appendChild(searchedCitieslist);
@@ -68,6 +69,25 @@ cityClickHandler = (event) => {
     // end of if
 }
 // end cityClickHandler
+
+getLocation = () => {
+    console.log("attempting to get location");
+    // if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(onSuccess, onFailure);
+    // }
+}
+
+onSuccess = (position) => {
+    console.log ("success: "+navigator.geolocation);
+    console.log("Heres your pos");
+    console.log ("Latitude: " + position.coords.latitude + 
+    "Longitude: " + position.coords.longitude);
+}
+
+onFailure = () => {
+    console.log("geolocation not working");
+    console.log ("failure: "+navigator.geolocation);
+}
 
 checkWeather = (checkCity) => {
     const tempEl = document.getElementById("temp");
@@ -158,6 +178,8 @@ const getFiveDay = (daily) => {
 // end getFiveDay function
 
 init = () => {
+    console.log("Here we go");
+    getLocation();
     displayLocalStorage();
     if (searchArray.length > 0) checkWeather(searchArray[0]);
 }
