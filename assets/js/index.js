@@ -1,7 +1,11 @@
 const citySearchEl = document.getElementById("submit");
 const searchedCities = document.getElementById("searched-cities");
 const appId = "f642abd07680d52d301698bab489005d";
-const dateObj = dayjs();
+
+// for the day of the week
+const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+var d = new Date();
+
 const searchArray = JSON.parse(localStorage.getItem("weatherSearch")) || [];
 // takes local storage searches and puts them into an array to display and limit the amount of search item
 
@@ -72,39 +76,45 @@ cityClickHandler = (event) => {
 
 getLocation = () => {
     console.log("attempting to get location");
-    // if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(onSuccess, onFailure);
-    // }
+    navigator.geolocation.getCurrentPosition(autoCheck);
 }
 
-onSuccess = (position) => {
-    console.log ("success: "+navigator.geolocation);
-    console.log("Heres your pos");
+autoCheck = (position) => {
+    const requestUrl = `http://api.openweathermap.org/geo/1.0/reverse?lat={lat}&lon={lon}&limit={limit}&appid={API key}`;
+    fetch(requestUrl)
+        .then(response => response.json())
+        .then(data => {
+
+        }
+        )
     console.log ("Latitude: " + position.coords.latitude + 
     "Longitude: " + position.coords.longitude);
-}
-
-onFailure = () => {
-    console.log("geolocation not working");
-    console.log ("failure: "+navigator.geolocation);
 }
 
 checkWeather = (checkCity) => {
     const tempEl = document.getElementById("temp");
     const humidityEl = document.getElementById("humidity");
     const wind = document.getElementById("wind");
+    var requestUrl;
 
-    // if (checkCity === "click"){
-    //     checkCity = document.getElementById
-    // }
+    if (typeof checkCity === 'object' && checkCity !== null) {
 
-    const requestUrl = `https://api.openweathermap.org/data/2.5/weather?q=${checkCity}&units=imperial&appid=${appId}`;
+        var requestUrl = `https://api.openweathermap.org/data/2.5/weather?q=${checkCity}&units=imperial&appid=${appId}`;
+        console.log("checkCity is object");
+    }
+    else {
+        var requestUrl = `https://api.openweathermap.org/data/2.5/weather?q=${checkCity}&units=imperial&appid=${appId}`;
+        console.log("checkCity is not object");
+        console.log("checkCity is "+checkCity);
+    }
+
     fetch(requestUrl)
         .then(response => response.json())
         .then(data => {
+            console.log(data);
             const { weather, name, coord: { lat }, coord: { lon }, main: { temp }, main: { humidity }, wind: { speed } } = data;
             const cityNameEl = document.getElementById("city-name");
-            cityNameEl.innerHTML = `${name}  ${dateObj.format("M-D-YYYY")}`
+            cityNameEl.innerHTML = `${name}  Today`
             tempEl.innerHTML = temp;
             weathColor(temp, "temp", "temp");
             humidityEl.innerHTML = humidity;
@@ -135,6 +145,7 @@ uvRequest = (lat, lon) => {
     fetch(uvRequestUrl)
         .then(blob => blob.json())
         .then(data => {
+            console.log(data);
             const uv = document.getElementById("uv");
             const { current: { uvi }, daily } = data;
 
@@ -156,8 +167,9 @@ const getFiveDay = (daily) => {
         const { weather, temp, humidity } = daily[i];
 
         const fiveDateEl = document.getElementById(`day${i}-date`);
-        const day = dateObj.add(`${i}`, "day");
-        fiveDateEl.innerHTML = day.format("M-D-YYYY");
+        d.setDate(d.getDate() + 1); 
+        const day = d.toLocaleDateString('en-US', { weekday: 'long' });
+        fiveDateEl.innerHTML = day;
 
         const fiveConditionEl = document.getElementById(`day${i}-condition`);
 
@@ -178,8 +190,7 @@ const getFiveDay = (daily) => {
 // end getFiveDay function
 
 init = () => {
-    console.log("Here we go");
-    getLocation();
+    // getLocation();
     displayLocalStorage();
     if (searchArray.length > 0) checkWeather(searchArray[0]);
 }
