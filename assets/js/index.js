@@ -107,9 +107,8 @@ checkWeather = (checkCity) => {
   fetch(requestUrl)
     .then((errcheck) => {
       if (!errcheck.ok) {
-        throw Error("problem with weather server");
-      }
-      console.log("this is errcheck ", errcheck);
+        throw Error(errcheck.status);
+      };
       return errcheck;
     })
     .then((response) => response.json())
@@ -149,8 +148,9 @@ checkWeather = (checkCity) => {
         displayLocalStorage();
       }
     })
-    .catch(() => {
-      console.log("error caught");
+    .catch((error) => {
+      console.log ("there is an error from server");
+      console.log(error);
     });
   // end of fetch .then .then .then
 };
