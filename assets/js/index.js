@@ -105,6 +105,13 @@ checkWeather = (checkCity) => {
   }
 
   fetch(requestUrl)
+    .then((errcheck) => {
+      if (!errcheck.ok) {
+        throw Error("problem with weather server");
+      }
+      console.log ("this is errcheck ",errcheck);
+      return errcheck;
+    })
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
@@ -142,7 +149,7 @@ checkWeather = (checkCity) => {
         displayLocalStorage();
       }
     });
-  // end of fetch .then .then
+  // end of fetch .then .then .then
 };
 // end of checkWeather function
 
