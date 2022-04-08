@@ -109,7 +109,7 @@ checkWeather = (checkCity) => {
       if (!errcheck.ok) {
         throw Error("problem with weather server");
       }
-      console.log ("this is errcheck ",errcheck);
+      console.log("this is errcheck ", errcheck);
       return errcheck;
     })
     .then((response) => response.json())
@@ -148,6 +148,9 @@ checkWeather = (checkCity) => {
         localStorage.setItem("weatherSearch", JSON.stringify(searchArray));
         displayLocalStorage();
       }
+    })
+    .catch(() => {
+      console.log("error caught");
     });
   // end of fetch .then .then .then
 };
